@@ -1,0 +1,13 @@
+{
+    "network": "mainnet",
+    "candle": [{
+        "name": "Candle",
+        "address": "0xbc138bD20C98186CC0342C8e380953aF0cb48BA8",
+        "startBlock": "13904404"
+    }],
+    "burner": [{
+        "name": "Burner",
+        "address": "0xf05DA838BCE31AA32F776b11a2De1B65AF15DbB6",
+        "startBlock": "13952508"
+    }]
+}

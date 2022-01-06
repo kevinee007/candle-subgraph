@@ -4,11 +4,11 @@ schema:
 dataSources:
   - kind: ethereum
     name: Candle
-    network: ropsten
+    network: mainnet
     source:
-      address: "0xAb1eeDf9283760940b8c15256983E98C42A3E356"
+      address: "0xbc138bD20C98186CC0342C8e380953aF0cb48BA8"
       abi: Candle
-      startBlock: 11762045
+      startBlock: 13904404
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5
@@ -33,11 +33,11 @@ dataSources:
       file: ./src/mapping.ts
   - kind: ethereum
     name: Burner
-    network: ropsten
+    network: mainnet
     source:
-      address: "0x95FACB7a8c4EDf4923D4aD2Cb95B2bdEBff2af04"
+      address: "0xf05DA838BCE31AA32F776b11a2De1B65AF15DbB6"
       abi: Burner
-      startBlock: 11763490
+      startBlock: 13952508
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5
