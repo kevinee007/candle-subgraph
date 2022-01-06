@@ -1,0 +1,18 @@
+type User @entity {
+  id: ID!
+  "Total number of times user burned CNDL"
+  burnCount: BigInt!
+  "Total amount of CNDL burned"
+  burnAmount: BigInt!
+}
+
+type Burn @entity {
+  "Transaction ID - LogIndex"
+  id: ID!
+  "Address burner"
+  burner: User!
+  "Amount burned"
+  amount: BigInt!
+  "Message accompanying burn"
+  message: String!
+}

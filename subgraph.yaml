@@ -1,0 +1,53 @@
+specVersion: 0.0.4
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: Candle
+    network: ropsten
+    source:
+      address: "0xAb1eeDf9283760940b8c15256983E98C42A3E356"
+      abi: Candle
+      startBlock: 11762045
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - Approval
+        - DelegateChanged
+        - DelegateVotesChanged
+        - Transfer
+      abis:
+        - name: Candle
+          file: ./abis/Candle.json
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,uint256)
+          handler: handleApproval
+        - event: DelegateChanged(indexed address,indexed address,indexed address)
+          handler: handleDelegateChanged
+        - event: DelegateVotesChanged(indexed address,uint256,uint256)
+          handler: handleDelegateVotesChanged
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+      file: ./src/mapping.ts
+  - kind: ethereum
+    name: Burner
+    network: ropsten
+    source:
+      address: "0x95FACB7a8c4EDf4923D4aD2Cb95B2bdEBff2af04"
+      abi: Burner
+      startBlock: 11763490
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - BurnWithMessage
+      abis:
+        - name: Burner
+          file: ./abis/Burner.json
+      eventHandlers:
+        - event: BurnWithMessage(uint256,string)
+          handler: handleBurnWithMessage
+      file: ./src/mapping.ts

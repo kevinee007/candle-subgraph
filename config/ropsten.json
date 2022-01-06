@@ -1,0 +1,13 @@
+{
+    "network": "ropsten",
+    "candle": [{
+        "name": "Candle",
+        "address": "0xAb1eeDf9283760940b8c15256983E98C42A3E356",
+        "startBlock": "11762045"
+    }],
+    "burner": [{
+        "name": "Burner",
+        "address": "0x95FACB7a8c4EDf4923D4aD2Cb95B2bdEBff2af04",
+        "startBlock": "11763490"
+    }]
+}

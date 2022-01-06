@@ -1,0 +1,57 @@
+specVersion: 0.0.4
+schema:
+  file: ./schema.graphql
+dataSources:
+  {{#candle}}
+  - kind: ethereum
+    name: {{name}}
+    network: {{network}}
+    source:
+      address: "{{address}}"
+      abi: Candle
+      startBlock: {{startBlock}}
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - Approval
+        - DelegateChanged
+        - DelegateVotesChanged
+        - Transfer
+      abis:
+        - name: Candle
+          file: ./abis/Candle.json
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,uint256)
+          handler: handleApproval
+        - event: DelegateChanged(indexed address,indexed address,indexed address)
+          handler: handleDelegateChanged
+        - event: DelegateVotesChanged(indexed address,uint256,uint256)
+          handler: handleDelegateVotesChanged
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+      file: ./src/mapping.ts
+  {{/candle}}
+  {{#burner}}
+  - kind: ethereum
+    name: {{name}}
+    network: {{network}}
+    source:
+      address: "{{address}}"
+      abi: Burner
+      startBlock: {{startBlock}}
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - BurnWithMessage
+      abis:
+        - name: Burner
+          file: ./abis/Burner.json
+      eventHandlers:
+        - event: BurnWithMessage(uint256,string)
+          handler: handleBurnWithMessage
+      file: ./src/mapping.ts
+  {{/burner}}
